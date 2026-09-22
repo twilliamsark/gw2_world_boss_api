@@ -1,0 +1,220 @@
+{
+  "combined": [
+    {
+      "boss": {
+        "id": 1,
+        "name": "Admiral Taidha Covington",
+        "description": "Kill Admiral Taidha Covington",
+        "chatlink": "[&BKgBAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 2,
+        "name": "Svanir Shaman Chief",
+        "description": "Kill the Svanir shaman chief to break his control over the ice elemental",
+        "chatlink": "[&BMIDAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 3,
+        "name": "Megadestroyer",
+        "description": "Kill the megadestroyer before it blows everyone up",
+        "chatlink": "[&BM0CAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 4,
+        "name": "Fire Elemental",
+        "description": "Destroy the fire elemental created from chaotic energy fusing with the C.L.E.A.N. 5000's energy core",
+        "chatlink": "[&BEcAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 5,
+        "name": "The Shatterer",
+        "description": "Slay the Shatterer",
+        "chatlink": "[&BE4DAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 6,
+        "name": "Great Jungle Wurm",
+        "description": "Defeat the great jungle wurm",
+        "chatlink": "[&BEEFAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 7,
+        "name": "Modniir Ulgoth",
+        "description": "Defeat Ulgoth the Modniir and his minions",
+        "chatlink": "[&BLAAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 8,
+        "name": "Shadow Behemoth",
+        "description": "Defeat the shadow behemoth",
+        "chatlink": "[&BPcAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 10,
+        "name": "Golem Mark II",
+        "description": "Defeat the Inquest's golem Mark II",
+        "chatlink": "[&BNQCAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 2,
+        "name": "Svanir Shaman Chief",
+        "description": "Kill the Svanir shaman chief to break his control over the ice elemental",
+        "chatlink": "[&BMIDAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 9,
+        "name": "Claw of Jormag",
+        "description": "Defeat the Claw of Jormag",
+        "chatlink": "[&BHoCAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 4,
+        "name": "Fire Elemental",
+        "description": "Destroy the fire elemental created from chaotic energy fusing with the C.L.E.A.N. 5000's energy core",
+        "chatlink": "[&BEcAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 1,
+        "name": "Admiral Taidha Covington",
+        "description": "Kill Admiral Taidha Covington",
+        "chatlink": "[&BKgBAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 6,
+        "name": "Great Jungle Wurm",
+        "description": "Defeat the great jungle wurm",
+        "chatlink": "[&BEEFAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 3,
+        "name": "Megadestroyer",
+        "description": "Kill the megadestroyer before it blows everyone up",
+        "chatlink": "[&BM0CAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 8,
+        "name": "Shadow Behemoth",
+        "description": "Defeat the shadow behemoth",
+        "chatlink": "[&BPcAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 5,
+        "name": "The Shatterer",
+        "description": "Slay the Shatterer",
+        "chatlink": "[&BE4DAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 2,
+        "name": "Svanir Shaman Chief",
+        "description": "Kill the Svanir shaman chief to break his control over the ice elemental",
+        "chatlink": "[&BMIDAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 7,
+        "name": "Modniir Ulgoth",
+        "description": "Defeat Ulgoth the Modniir and his minions",
+        "chatlink": "[&BLAAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 4,
+        "name": "Fire Elemental",
+        "description": "Destroy the fire elemental created from chaotic energy fusing with the C.L.E.A.N. 5000's energy core",
+        "chatlink": "[&BEcAAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 10,
+        "name": "Golem Mark II",
+        "description": "Defeat the Inquest's golem Mark II",
+        "chatlink": "[&BNQCAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 6,
+        "name": "Great Jungle Wurm",
+        "description": "Defeat the great jungle wurm",
+        "chatlink": "[&BEEFAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 9,
+        "name": "Claw of Jormag",
+        "description": "Defeat the Claw of Jormag",
+        "chatlink": "[&BHoCAAA=]"
+      },
+      "duration": 15
+    },
+    {
+      "boss": {
+        "id": 8,
+        "name": "Shadow Behemoth",
+        "description": "Defeat the shadow behemoth",
+        "chatlink": "[&BPcAAAA=]"
+      },
+      "duration": 15
+    }
+  ]
+}
