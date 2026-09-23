@@ -1,7 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
-import userRoutes from './routes/user.routes';
 import bossesRoutes from './routes/bosses.routes';
 
 const envConfig = dotenv.config({ path: path.resolve(process.cwd(), '.env') });
@@ -17,7 +16,6 @@ const PORT = Number(process.env.PORT ?? process.env.NODE_GW2_PORT ?? 80);
 app.use(express.json());
 
 // API Route Mounts
-app.use('/api/users', userRoutes);
 app.use('/api/bosses', bossesRoutes);
 
 // Root Fallback Route

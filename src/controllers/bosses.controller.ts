@@ -37,88 +37,57 @@ interface CombinedBossSequence {
   encounters: BossWithDuration[];
 }
 
-interface BossProgression {
-  bosses: Boss[];
-}
-
-const bosses: Boss[] = [
-  {
-    id: 1,
-    name: 'Boss One',
-    description: 'Description for Boss One',
-    chatlink: 'chatlink1',
-  },
-  {
-    id: 2,
-    name: 'Boss Two',
-    description: 'Description for Boss Two',
-    chatlink: 'chatlink2',
-  },
-];
-
-export const getBosses = (req: Request, res: Response) => {
-  res.status(200).json(bosses);
-};
-
 export const getGWBosses = async () => {
-  const BOSS_URL =
-    'https://wiki.guildwars2.com/index.php?title=Widget:Event_timer/data.json&action=raw';
   try {
-    // const response = await fetch(BOSS_URL, {
-    //   method: 'GET',
-    //   headers: {
-    //     Accept: 'application/json, text/plain, */*',
-    //     'User-Agent': 'GW2-WorldBossTimer/1.0',
-    //   },
-    // });
-    // const data = await response.text();
-    const now: Date = new Date();
-    const nowAsString: string = now.toLocaleString();
-    const yesterday: Date = new Date(now.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
-
-    var data: string = '';
-
+    var data = '';
     const rawData: RawBossDBData = await getCurrentRawData();
+
+    const now: Date = new Date();
+    const yesterday: Date = new Date(now.getTime() - 24 * 60 * 60 * 1000);
 
     if (rawData.created_at < yesterday.getTime()) {
       console.log('Raw data is older than 24 hours:', rawData.created_at);
-      // data = await fs.readFile('docs/data.json', 'utf-8');
       const newRawData = await getNewRawData();
       data = newRawData.json;
-      upsertRawData({ json: data, created_at: now.getTime() });
+      await upsertRawData({ json: data, created_at: now.getTime() });
     } else if (rawData.created_at >= yesterday.getTime()) {
       console.log('Raw data is within the last 24 hours:', rawData.created_at);
       data = rawData.json;
     }
 
-    const dynamicHash = JSON.parse(data);
-    const wb = dynamicHash['events']['core-wb']; // "john@example.com"
-
-    const segments = wb['segments'];
-
-    const bosses: Boss[] = Object.entries(segments).map(
-      ([id, segment]: [string, any]) => ({
-        id: Number(id),
-        name: segment?.name,
-        description: segment?.link,
-        chatlink: segment?.chatlink,
-      }),
-    );
-
-    const sequences: BossSequence[] = wb['sequences']['pattern'];
-
-    const combined: CombinedBossSequence = {
-      encounters: sequences.map((sequence) => ({
-        boss: bosses[Number(sequence.r) - 1],
-        duration: Number(sequence.d),
-      })),
-    };
+    const combined: CombinedBossSequence = await combinedBossAndSequence(data);
 
     return combined;
   } catch (error) {
     console.error('Error fetching GW Bosses:', error);
     return [];
   }
+};
+
+const combinedBossAndSequence = async (
+  data: string,
+): Promise<CombinedBossSequence> => {
+  const dynamicHash = JSON.parse(data);
+  const wb = dynamicHash['events']['core-wb']; // "john@example.com"
+  const segments = wb['segments'];
+  const bosses: Boss[] = await parseBossSegments(segments);
+  const sequences: BossSequence[] = wb['sequences']['pattern'];
+
+  return {
+    encounters: sequences.map((sequence) => ({
+      boss: bosses[Number(sequence.r) - 1],
+      duration: Number(sequence.d),
+    })),
+  };
+};
+
+const parseBossSegments = async (bossSegments: any): Promise<Boss[]> => {
+  return Object.entries(bossSegments).map(([id, segment]: [string, any]) => ({
+    id: Number(id),
+    name: segment?.name,
+    description: segment?.link,
+    chatlink: segment?.chatlink,
+  }));
 };
 
 const getCurrentRawData = async (): Promise<RawBossDBData> => {
@@ -162,15 +131,4 @@ const getNewRawData = async (): Promise<RawBossDBData> => {
   };
 
   return rawData;
-};
-
-const getBossProgression = (data: string): BossProgression => {
-  const parsedData = JSON.parse(data);
-  const bosses: Boss[] = parsedData.bosses.map((boss: any) => ({
-    id: boss.id,
-    name: boss.name,
-    description: boss.description,
-    chatlink: boss.chatlink,
-  }));
-  return { bosses };
 };
