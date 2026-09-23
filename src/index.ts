@@ -11,7 +11,7 @@ if (envConfig.error) {
 }
 
 const app: Application = express();
-const PORT = Number(process.env.PORT ?? process.env.NODE_GW2_PORT ?? 3000);
+const PORT = Number(process.env.PORT ?? process.env.NODE_GW2_PORT ?? 80);
 
 // Body parsing middleware
 app.use(express.json());
@@ -26,6 +26,10 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Start Server Listener
-app.listen(PORT, () => {
-  console.log(`⚡️ [server]: Server running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`⚡️ [server]: Server running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;

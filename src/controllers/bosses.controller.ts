@@ -82,9 +82,9 @@ export const getGWBosses = async () => {
 
     if (rawData.created_at < yesterday.getTime()) {
       console.log('Raw data is older than 24 hours:', rawData.created_at);
-      data = await fs.readFile('docs/data.json', 'utf-8');
-      // const newRawData = await getNewRawData();
-      // data = newRawData.json;
+      // data = await fs.readFile('docs/data.json', 'utf-8');
+      const newRawData = await getNewRawData();
+      data = newRawData.json;
       upsertRawData({ json: data, created_at: now.getTime() });
     } else if (rawData.created_at >= yesterday.getTime()) {
       console.log('Raw data is within the last 24 hours:', rawData.created_at);
@@ -122,8 +122,6 @@ export const getGWBosses = async () => {
 };
 
 const getCurrentRawData = async (): Promise<RawBossDBData> => {
-  const data = await fs.readFile('docs/data.json', 'utf-8');
-
   const result = await db.execute(
     'SELECT json, created_at FROM raw_gw2_boss_feed',
   );
