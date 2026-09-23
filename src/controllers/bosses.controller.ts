@@ -1,10 +1,9 @@
-import { Request, Response } from 'express';
-import { promises as fs } from 'fs';
 import dotenv from 'dotenv';
-import path from 'path';
 import { createClient } from '@libsql/client';
 
-const envConfig = dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+// Ensure local `.env` is loaded before reading Turso credentials.
+// Missing file is fine on Vercel, where env vars are injected.
+dotenv.config();
 
 const db = createClient({
   url: process.env.TURSO_DB_URL!,
