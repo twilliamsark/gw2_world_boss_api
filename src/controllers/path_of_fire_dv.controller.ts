@@ -6,7 +6,7 @@ import {
   BossEncounter,
 } from '../shared/interfaces';
 
-export const getHardBosses = async () => {
+export const getPOFDVBosses = async () => {
   try {
     const data = await getRawData();
     const combined: BossEncounters = await extractBossEncounters(data);
@@ -20,10 +20,10 @@ export const getHardBosses = async () => {
 
 const extractBossEncounters = async (data: string): Promise<BossEncounters> => {
   const dynamicHash = JSON.parse(data);
-  const wb = dynamicHash['events']['core-hwb'];
+  const wb = dynamicHash['events']['pof-dv'];
   const segments = wb['segments'];
   const bosses: Boss[] = await parseBossSegments(segments);
-  const encounters: Encounter[] = wb['sequences']['partial'];
+  const encounters: Encounter[] = wb['sequences']['pattern'];
 
   const bossEncounters: BossEncounter[] = encounters.map((encounter) => ({
     boss: bosses[Number(encounter.r)],
